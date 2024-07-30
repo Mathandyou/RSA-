@@ -1,0 +1,27 @@
+加密
+生成 RSA 密钥对，并保存公钥和私钥到文件 public_key.pem 和 private_key.pem。
+生成随机 AES 密钥，并使用 AES 加密消息。
+使用 HMAC（基于 AES 密钥）生成消息摘要，确保消息的完整性和真实性。
+使用 RSA 公钥加密 AES 密钥。
+组合 AES 加密的消息、AES 密钥和 HMAC 生成的摘要，保存到 encrypted_data.json 文件中。
+
+解密
+从文件中读取 RSA 私钥。
+从文件 encrypted_data.json 中读取加密的 JSON 数据。
+解析 JSON 数据，分离 RSA 加密的 AES 密钥和 AES 加密的消息。
+使用 RSA 私钥解密 AES 密钥。
+使用 AES 密钥解密消息，并验证 HMAC，确保消息的完整性和真实性。
+
+使用
+打开dist文件夹
+运行 ap.exe,运行后输入需要加密的内容
+加密后结果存在 encrypted_data.json中,格式为:key+密文
+解密只需运行zp.exe即可获得
+解密结果输出在decrypted_message.txt中
+
+文件说明
+ap.exe 加密程序
+zp.exe 解密程序
+encrypted_data.json 保存文件
+public_key.pem 公钥
+private_key.pem 私钥
